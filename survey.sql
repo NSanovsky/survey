@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 07, 2020 at 10:16 PM
+-- Generation Time: Nov 28, 2022 at 03:55 PM
 -- Server version: 5.7.24
--- PHP Version: 7.2.14
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,7 +35,15 @@ CREATE TABLE IF NOT EXISTS `answers` (
   `answer` text COLLATE utf8_croatian_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `question_id` (`question_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+
+--
+-- Dumping data for table `answers`
+--
+
+INSERT INTO `answers` (`id`, `question_id`, `answer`) VALUES
+(1, 9, 'a:1:{i:0;s:5:\"Item1\";}'),
+(2, 9, 'a:1:{i:0;s:5:\"Item2\";}');
 
 -- --------------------------------------------------------
 
@@ -54,21 +62,20 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `max` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `survey_id` (`survey_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
 --
 -- Dumping data for table `questions`
 --
 
 INSERT INTO `questions` (`id`, `question`, `type`, `survey_id`, `input_values`, `min`, `max`) VALUES
-(1, 'Pitanje1', 'radio', 1, 'a:2:{i:0;s:3:\"rb1\";i:1;s:3:\"rb2\";}', NULL, NULL),
-(2, 'Pitanje2', 'text', 1, NULL, NULL, NULL),
-(3, 'Pitanje3', 'num', 1, NULL, 4, 66),
-(4, 'Pitanje1', 'num', 2, NULL, 2, 66),
-(5, 'Pitanje2', 'checkbox', 2, 'a:3:{i:0;s:3:\"ch1\";i:1;s:3:\"ch2\";i:2;s:3:\"ch3\";}', NULL, NULL),
-(6, 'Pitanje3', 'radio', 2, 'a:2:{i:0;s:3:\"rb1\";i:1;s:3:\"rb2\";}', NULL, NULL),
-(7, 'Pitanje1', 'text', 3, NULL, NULL, NULL),
-(8, 'Pitanje2', 'num', 3, NULL, 1, 5);
+(12, 'Spol', 'radio', 7, 'a:3:{i:0;s:6:\"MuÅ¡ko\";i:1;s:7:\"Å½ensko\";i:2;s:6:\"Ostalo\";}', NULL, NULL),
+(13, 'Koje proizvode kupujete na dnevnoj bazi?', 'checkbox', 7, 'a:3:{i:0;s:4:\"Kruh\";i:1;s:7:\"Mlijeko\";i:2;s:6:\"Jabuke\";}', NULL, NULL),
+(14, 'OpiÅ¡ite kako provodite svoje jutro. ', 'text', 7, NULL, NULL, NULL),
+(15, 'Spol', 'radio', 1, 'a:3:{i:0;s:6:\"MuÅ¡ko\";i:1;s:7:\"Å½ensko\";i:2;s:6:\"Ostalo\";}', NULL, NULL),
+(16, 'Koje namirnice kupujete svaki dan?', 'checkbox', 1, 'a:4:{i:0;s:7:\"Mlijeko\";i:1;s:4:\"Kruh\";i:2;s:4:\"Piva\";i:3;s:6:\"Jabuke\";}', NULL, NULL),
+(17, 'Broj noge', 'num', 1, NULL, 34, 48),
+(18, 'OpiÅ¡ite vaÅ¡ neradni dan', 'text', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -83,16 +90,17 @@ CREATE TABLE IF NOT EXISTS `survey_info` (
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
 --
 -- Dumping data for table `survey_info`
 --
 
 INSERT INTO `survey_info` (`id`, `name`, `user_id`) VALUES
-(1, 'Anketa1', 1),
-(2, 'Anketa2', 1),
-(3, 'Anketa3', 1);
+(1, 'Anketa 1', 1),
+(2, 'Anketa 2', 1),
+(3, 'Anketa 3', 1),
+(4, 'Anketa 4', 1);
 
 -- --------------------------------------------------------
 
